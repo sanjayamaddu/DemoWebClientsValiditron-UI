@@ -1,0 +1,224 @@
+<div class="side-form">
+    <div class="content">
+        <h3 style="margin-bottom: 20px;">{{vm.title}}</h3>
+        <div class="well form-container" style="display: inline-block;">
+            <form method="post" name="userForm" novalidate>
+
+                <div class="row">
+                    <div class=" col-md-4">
+                        <div class="form-group col-md-12 required"
+                            ng-class="{ 'has-error' : userForm.regdatetime.$dirty && userForm.regdatetime.$error.required }">
+                            <label class="control-label" for="lastname" style="display:block">Registration date-time</label>
+                            <input type="datetime-local" class="form-control" id="regdatetime" name="input"
+                                ng-model="vm.subject.registerdDate" placeholder="yyyy-MM-ddTHH:mm a"
+                                ng-disabled="isDisabled" ng-required />
+
+                            <p ng-show="userForm.regdatetime.$dirty && userForm.regdatetime.$error.required"
+                                class="help-block">Registration date is required.</p>
+
+
+
+                        </div>
+
+                        <div class="form-group col-md-12 required"
+                            ng-class="{ 'has-error' : userForm.subjectUID.$dirty && userForm.subjectUID.$error.required }">
+                            <label class="control-label" for="subjectUID">CovidCare ID</label>
+                            <input type="text" id="subjectUID" name="subjectUID" class="form-control"
+                                ng-disabled="isDisabled" ng-model="vm.subject.covidCareId" required />
+                            <p ng-show="userForm.subjectUID.$dirty && userForm.subjectUID.$error.required"
+                                class="help-block">CovidCare ID is required.</p>
+                        </div>
+                        <div class="form-group col-md-12 required"
+                            ng-class="{ 'has-error' : userForm.name.$dirty && userForm.name.$error.required }">
+                            <label class="control-label" for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" ng-model="vm.subject.name"
+                                ng-disabled="isDisabled" required />
+                            <p ng-show="userForm.name.$dirty && userForm.name.$error.required" class="help-block">Name
+                                is required.</p>
+
+                        </div>
+                        <div class="form-group col-md-12 required"
+                            ng-class="{ 'has-error' : userForm.gender.$dirty && userForm.gender.$error.required }">
+                            <label class="control-label" for="genderType">Gender</label>
+                            <select ng-model="vm.subject.gender" class="form-control"
+                                ng-options="x for x in gendertypes" ng-disabled="isDisabled" required></select>
+                        </div>
+                        <div class="form-group col-md-12  required"
+                            ng-class="{ 'has-error' : userForm.age.$dirty && userForm.age.$error.required }">
+                            <label class="control-label" for="lastname">Age</label>
+
+                            <input type="number" class="form-control" class="form-control" ng-maxlength="10" id="age"
+                                name="age" ng-model="vm.subject.age" ng-required="true" ng-disabled="isDisabled" />
+                            <p ng-show="userForm.age.$dirty && userForm.age.$error.required" class="help-block">Age is
+                                required.</p>
+
+                        </div>
+
+
+
+                        <div class="form-group col-md-12 required"
+                            ng-class="{ 'has-error' : userForm.mobile.$dirty && userForm.mobile.$error.required }">
+                            <label class="control-label" for="lastname">Mobile phone number</label>
+                            <input type="text" class="form-control" ng-disabled="isDisabled" id="mobile" name="mobile" ng-model="vm.subject.mobile"/>
+                                <!-- ng-model="vm.subject.mobile" required ng-pattern="/^[0-9]{10,10}$/" /> -->
+                            <p ng-show="userForm.mobile.$dirty && userForm.mobile.$error.required" class="help-block">
+                                Not a valid mobile number</p>
+
+                        </div>
+                        <div class="form-group col-md-12 required"
+                            ng-class="{ 'has-error' : userForm.email.$dirty && userForm.email.$error.required }">
+                            <label class="control-label" for="email">Email address</label>
+                            <input type="email" id="email" name="email" class="form-control" ng-model="vm.subject.email"
+                                ng-disabled="isDisabled" required />
+
+                            <p ng-show="userForm.email.$dirty && userForm.email.$error.required" class="help-block">Not
+                                a valid email</p>
+
+
+                        </div>
+                        <div class="form-group col-md-12 required"
+                            ng-class="{ 'has-error' : userForm.postcode.$dirty && userForm.postcode.$error.required }">
+                            <label class="control-label" for="lastname">Postcode</label>
+                            <input type="text" id="postcode" name="postcode" class="form-control"
+                                ng-model="vm.subject.postcode" ng-disabled="isDisabled" required />
+                            <p ng-show="userForm.postcode.$dirty && userForm.postcode.$error.required"
+                                class="help-block">Postcode is required</p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12 required">
+                            <label class="control-label" for="firstName">Contact opt out</label>
+                            <md-switch ng-model="vm.contactoptout" aria-label="Switch 1" ng-disabled="isDisabled">
+                            </md-switch>
+                        </div>
+                        <div class="form-group col-md-12 required">
+                            <label class="control-label" for="firstName">Lung condition</label>
+                            <md-switch ng-model="vm.lungcondtition" aria-label="Switch 1" ng-disabled="isDisabled">
+                            </md-switch>
+                        </div>
+                        <div class="form-group col-md-12 required">
+                            <label class="control-label" for="firstName">Cardiovascular condition</label>
+                            <md-switch ng-model="vm.cardcondtition" aria-label="Switch 1" ng-disabled="isDisabled">
+
+                            </md-switch>
+
+                        </div>
+                        <div class="form-group col-md-12 required">
+                            <label class="control-label" for="firstName">Smoker</label>
+                            <md-switch ng-model="vm.smoker" aria-label="Switch 1" ng-disabled="isDisabled">
+
+                            </md-switch>
+
+
+                        </div>
+                        <div class="form-group col-md-12 required">
+                            <label class="control-label" for="firstName">Diabetes</label>
+                            <md-switch ng-model="vm.diabetes" aria-label="Switch 1" ng-disabled="isDisabled">
+
+
+                        </div>
+                        <div class="form-group col-md-12 required">
+                            <label class="control-label" for="firstName">Overweight</label>
+                            <md-switch ng-model="vm.overweight" aria-label="Switch 1" ng-disabled="isDisabled">
+
+                            </md-switch>
+
+
+                        </div>
+                        <div class="form-group col-md-12 required">
+                            <label class="control-label" for="firstName">Hypertension</label>
+                            <md-switch ng-model="vm.hypertenstion" aria-label="Switch 1" ng-disabled="isDisabled">
+
+                            </md-switch>
+
+                        </div>
+                        <div class="form-group col-md-12 required">
+                            <label class="control-label" for="firstName">Pregnant</label>
+                            <md-switch ng-model="vm.pregnant" aria-label="Switch 1" ng-disabled="isDisabled">
+
+                            </md-switch>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12 required"
+                            ng-class="{ 'has-error' : userForm.clinicid.$dirty && userForm.clinicid.$error.required }">
+                            <label class="control-label" for="org">Referral clinic</label>
+                            <!-- <select ng-model="vm.subject.referralClinicId" class="form-control" 
+                                ng-options="x for x in referralClinicIds" ng-disabled="isDisabled" required></select> -->
+                            <select id="org" ng-model="vm.subject.selectedreferralClinicName" class="form-control"
+                                ng-options="referralClinicName for referralClinicName in referralClinicNames" ng-disabled="isDisabled" required>
+                            </select>
+
+                            <p ng-show="userForm.clinicid.$dirty && userForm.clinicid.$error.required"
+                                class="help-block">Clinic Id required</p>
+                        </div>
+
+                        <div class="form-group col-md-12 " ng-class="{ 'has-error' : userForm.referralcode.$dirty }">
+                            <!-- && userForm.referralcode.$error.required  -->
+                            <label class="control-label" for="referralcode">Referral code</label>
+                            <input type="text" id="referralcode" name="lastName" class="form-control"
+                                ng-model="vm.subject.referralcode" ng-disabled="isDisabled" />
+                            <p ng-show="userForm.referralcode.$dirty && userForm.referralcode.$error.required"
+                                class="help-block">Referral code
+                            </p>
+                        </div>
+                        <!-- <div style="border-style: ridge;border-radius: 10px; display: inline-block;margin-top:200px"> -->
+                        <div>
+                            <fieldset>
+                                <legend style="font-size: 17px;width: 30%; text-align: left; padding-left: 5%;">COVID-19</legend>
+                                <div class="form-group col-md-12">
+                                     <!-- style="margin-top:20px"> -->
+                            
+                                    <label style="display:block" for="vitalStatusName">Symptom start date</label>
+                                    <md-datepicker ng-model="vm.symptomstartDate" md-placeholder="Enter date" md-current-view="year"
+                                        ng-disabled="isDisabled" ng-required></md-datepicker>
+                            
+                                </div>
+                            
+                                <div class="form-group col-md-12">
+                                    <label class="control-label" for="lastname" style="display:block">Test date</label>
+                            
+                                    <md-datepicker ng-model="vm.testDate" md-placeholder="Enter date" md-current-view="year"
+                                        ng-disabled="isDisabled" ng-required></md-datepicker>
+                            
+                            
+                                </div>
+                            
+                                <div class="form-group col-md-12 ">
+                                    <label class="control-label" for="vitalStatusName">Test result</label>
+                                    <select name="vitalStatusName" ng-model="vm.testResult" class="form-control" ng-options="x for x in testresults"
+                                        ng-disabled="isDisabled" required></select>
+                            
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="isSaveVisible">
+                    Complete all mandatory questions (marked with <span style="color: red">*</span>) to activate the <b>Save</b> button.
+                </div> 
+        </div>
+        <div class="form-group col-md-12" style="    margin-left: 15px;margin-top: 15px;">
+            <a class="btn btn-default" ui-sref="subjects">Close</a>
+            <button class="btn btn-primary" ng-disabled="!userForm.$valid" ng-click="vm.saveSubject()" ng-disabled="isDisabled" ng-show="isSaveVisible">Save</button>
+            <button class="btn btn-primary" ng-click="vm.createCheckin()" ng-show="isChckinVisible">Create checkin</button>
+        </div>
+        <div class="form-group col-md-12 alert alert-danger fade in" ng-show="subject_error_show">
+
+            <span>{{subject_error}}</span>
+        </div>
+        </form>
+
+
+    </div>
+
+
+    <div class="background"></div>
+</div>
