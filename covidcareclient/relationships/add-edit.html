@@ -1,0 +1,229 @@
+<div class="side-form">
+    <div class="content">
+        <h3 style="margin-bottom: 20px;">{{vm.title}}</h3>
+        <div class="well form-container" style="display: inline-block;">
+            <form method="post" name="userForm" novalidate>
+
+<div class="row">
+ <div class=" col-md-4" >
+ 
+ <div class="form-group col-md-12 required">
+					 <label class="control-label" for="lastname" style="display:block">Check-in date-time</label>
+									<div class="input-group date  col-md-12" 
+									datetimepicker-options="{{vm.options}}" 
+									datetimepicker ng-model="vm.encounter.checkinDateTime"
+									id="datetimepicker2"
+									format="DD/MM/YYYY hh:mm">
+									<input type="text" class="form-control" placeholder="DD/MM/YYYY THH:mm a" required  ng-disabled="isDisabled"/>
+									<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+									</div>
+
+								</div>		
+ 
+  
+
+            <div class="form-group col-md-12 required" ng-class="{ 'has-error' : userForm.subjectUID.$dirty && userForm.subjectUID.$error.required }">
+			                    <label class="control-label" for="subjectUID">Prompted by</label>
+			                         <select ng-model="vm.encounter.reasonOrPromptedBy" class="form-control" required ng-options="x for x in promptedbylist" ng-disabled="isDisabled"></select>
+                </div>
+<div class="form-group col-md-12 required">
+                    <label  class="control-label" for="firstName">CovidCare ID</label>
+                    <input type="text" id="firstName" name="firstName" class="form-control" required ng-model="vm.encounter.covidcareID" ng-disabled="isDisabled" />
+	<p ng-show="IsCovidCareIDExist"
+                                class="help-block">User with CovidCare ID {{vm.encounter.covidcareID}} has not been registered </p>	       		
+      </div>
+                   <div class="form-group col-md-12 required">
+							                    <label  class="control-label"for="genderType">Heart rate (beats/min)</label>
+							                 
+			
+			<input type="number" class="form-control" 
+					class="form-control" 
+                  
+                   ng-maxlength="10"  
+                   id="heartrate" 
+                   name="heartrate" 
+                   ng-model="vm.heartrate"
+                   ng-required="true"
+				   min="1"
+                  step="1"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+
+         		 ng-disabled="isDisabled" />
+  
+                </div>
+				 <div class="form-group col-md-12  required" >
+                    <label class="control-label" for="lastname">Respiratory rate (breaths/30s)</label>
+					
+                  <input type="number" class="form-control" 
+					class="form-control" 
+                  
+                   ng-maxlength="10"  
+                   id="respiratoryrate" 
+                   name="respiratoryrate" 
+                   ng-model="vm.respiratoryrate"
+                   ng-required="true" ng-disabled="isDisabled"/>
+
+					
+      </div>
+	  <div class="form-group col-md-12 required" >
+                    <label class="control-label" for="lastname">Single breath count</label>
+                   
+				
+			<input type="number" class="form-control" 
+					class="form-control" 
+                  
+                   ng-maxlength="10"  
+                   id="singlebreathcount" 
+                   name="singlebreathcount" 
+				   min="1"
+                  step="1"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                   ng-model="vm.singlebreathcount"
+                   ng-required="true" ng-disabled="isDisabled"/>
+					
+      </div>
+	  <div class="form-group col-md-12 " >
+                    <label class="control-label" for="lastname">Temperature (C)</label>
+					
+					 <input type="text" class="form-control" 
+					class="form-control" 
+                  
+                   
+                   id="temperature" 
+                   name="temperature" 
+                   ng-model="vm.temperature"
+                   ng-required="true" ng-disabled="isDisabled"/>
+                    
+		<p ng-show="IsTempraturePositive"
+                                class="help-block">Temperature must be a positive decimal number </p>	  			
+      </div>
+	  
+	   
+</div>
+ <div class="col-md-4"> 
+
+      
+ <div class="form-group col-md-12 ">
+                    <label  class="control-label" for="firstName">Oxygen saturation (%)</label>
+                  
+					 
+
+			<input type="number" class="form-control" 
+					class="form-control" 
+                  
+                   ng-maxlength="10"  
+                   id="oxygen" 
+                   name="oxygen" 
+                   ng-model="vm.oxygen"
+				   min="1"
+                  step="1"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                   ng-disabled="isDisabled"/>
+							
+      </div>
+                
+                <div class="form-group col-md-12 required">
+                    <label  class="control-label" for="firstName">Dry cough</label>
+                  <select name="vitalStatusName" ng-model="vm.drycough" class="form-control" required ng-options="x for x in drycoughlist" ng-disabled="isDisabled"></select>
+
+
+					
+      </div>
+	  <div class="form-group col-md-12 required">
+                    <label  class="control-label" for="firstName">Fever</label>
+                  <select name="vitalStatusName" ng-model="vm.fever" class="form-control" required ng-options="x for x in feverlist" ng-disabled="isDisabled"></select>
+
+					
+      </div>
+	  <div class="form-group col-md-12 required">
+                    <label  class="control-label" for="firstName">Fatigue</label>
+                <select name="vitalStatusName" ng-model="vm.fatigue" required  class="form-control" ng-options="x for x in fatiguelist" ng-disabled="isDisabled"></select>
+
+					
+      </div>
+	  <div class="form-group col-md-12 required">
+                    <label  class="control-label" for="firstName">Shortness of breath</label>
+                   <select name="vitalStatusName" required ng-model="vm.shortnessofbreath" class="form-control" ng-options="x for x in shortnessbreathlist" ng-disabled="isDisabled"></select>
+
+
+					
+      </div>
+	  <div class="form-group col-md-12 required">
+                    <label  class="control-label" for="firstName">Lack of smell/taste</label>
+                   <select name="vitalStatusName" required ng-model="vm.lackofsmell" class="form-control" ng-options="x for x in lackofsmellist" ng-disabled="isDisabled"></select>
+
+
+					
+      
+					
+      </div>
+	  
+      </div>
+  
+
+<div class="col-md-4"> 
+ <div class="form-group col-md-12 required" ng-class="{ 'has-error' : userForm.consentStatusName.$dirty && userForm.consentStatusName.$error.required }">
+				      <label  class="control-label" for="subjectStatusName">Apathetic</label>
+				          <select name="consentStatusName" ng-model="vm.apathetic" class="form-control" ng-options="x for x in apetheliclist" required ng-disabled="isDisabled"></select>
+
+				                </div>
+                  <div class="form-group col-md-12 required" ng-class="{ 'has-error' : userForm.subjectStatusName.$dirty && userForm.subjectStatusName.$error.required }">
+				      <label  class="control-label" for="subjectStatusName">Depressed</label>
+				          <select name="subjectStatusName" ng-model="vm.depressed" class="form-control" ng-options="x for x in depressedlist" required ng-disabled="isDisabled"></select>
+
+				                </div>
+<div class="form-group col-md-12 required">
+    <label class="control-label" for="vitalStatusName">Anxious</label>
+    <select name="vitalStatusName" required ng-model="vm.anxious" class="form-control"
+        ng-options="x for x in anxiouslist" ng-disabled="isDisabled"></select>
+
+</div>
+
+<div class="form-group col-md-12 required">
+    <label class="control-label" for="lastname" style="display:block">Worried</label>
+
+    <select name="vitalStatusName" required ng-model="vm.worried" class="form-control"
+        ng-options="x for x in worriedlist" ng-disabled="isDisabled"></select>
+
+</div>
+                <!-- <div style="border-style: double;    display: inline-block;margin-top:10px"> -->
+                 <div>
+                    <fieldset>
+                        <legend style="font-size: 17px;width: 30%; text-align: left; padding-left: 5%;">Alert</legend>        
+                    <div class="form-group col-md-12 required" style="margin-top:20px">
+                        <label class="control-label" for="lastname" style="display:block">Vital signs alert</label>
+                
+                        <select name="vitalStatusName" ng-model="vm.vitalsign" required class="form-control"
+                            ng-options="x for x in vitalsignlist" ng-disabled="isDisabled"></select>
+                
+                
+                    </div>
+                    <div class="form-group col-md-12 required">
+                        <label class="control-label" for="vitalStatusName">Mental health alert</label>
+                        <select name="vitalStatusName" required ng-model="vm.mentalhealth" class="form-control"
+                            ng-options="x for x in mentalhealthalertlist" ng-disabled="isDisabled"></select>
+                
+                    </div>
+                </fieldset> 
+                </div>
+</div>
+ </div>  
+</div>
+<div class="form-group col-md-12" style="    margin-left: 15px;margin-top: 15px;">
+                    <a class="btn btn-default" ui-sref="relationships">Close</a>
+                    <button class="btn btn-primary" ng-disabled="!userForm.$valid" ng-show="isSaveVisible" ng-click="vm.saveencounter()">Save</button>
+                </div>
+				<div class="form-group col-md-12 alert alert-danger fade in" ng-show="subject_error_show">
+   
+    <span>{{subject_error}}</span>
+   </div>
+            </form>
+			
+        
+    </div>
+	
+
+    <div class="background"></div>
+</div>

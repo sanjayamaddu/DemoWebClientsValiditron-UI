@@ -1,0 +1,38 @@
+<div class="side-form">
+    <div class="content">
+        <h3 style="margin-bottom: 20px;">{{vm.title}}</h3>
+        <div class="well form-container" style="display: inline-block;">
+            <form method="post" name="userForm" novalidate>
+
+                <div class="row" style="padding: 2%;">
+                    <p>The clinic is currently set to <b>{{clinicName}}</b>. To simulate another Future Health
+                        Today installation, select a different clinic below and click <b>Set</b>. </p>
+
+
+                    <div class="form-group col-md-4 text-center" style="left: 35%;padding-top: 3%;" ;>
+                        <label class="control-label required" for="firstName">Referral clinic</label>
+                        <select id="org" ng-model="vm.selectedreferralClinicName" class="form-control"
+                        ng-options="referralClinicName for referralClinicName in referralClinicNames" ng-disabled="isDisabled" required>
+                    </select>
+                        <!-- <input type="text" id="firstName" name="firstName" class="form-control"
+                            ng-model="vm.clinicSetID" /> -->
+                    </div>
+
+                    <div class="form-group col-md-12" style="    margin-left: 15px;margin-top: 15px;">
+                        <button class="btn btn-primary" ng-disabled="!userForm.$valid"
+                            ng-click="vm.saveClinic()">Set</button>
+                        <a class="btn btn-default" ui-sref="subjects">Cancel</a>
+                    </div>
+                    <div class="form-group col-md-12 alert alert-danger fade in" ng-show="subject_error_show">
+                        <span>{{subject_error}}</span>
+                    </div>
+            </form>
+
+
+        </div>
+
+
+        <div class="background"></div>
+    </div>
+</div>
+<!-- </div> -->

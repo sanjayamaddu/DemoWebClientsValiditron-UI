@@ -1,0 +1,75 @@
+
+.switchdemoBasicUsage .inset {
+  padding-left: 25px;
+  padding-top: 25px;
+}
+md-switch.wlabel .md-bar::before {
+  content: "off";
+  position: absolute;
+  right: 0;
+  font-size: 9px;
+  line-height: 13px;
+  padding-right: 3px;
+}
+md-switch.wlabel.md-checked .md-bar::before {
+  content: "on";
+  left: 0;
+  padding-left: 3px;
+}
+
+md-switch {
+margin: 3px 0}
+ fieldset {
+  border: 2px solid black; 
+  border-radius: 10px;  
+  box-sizing: border-box; 
+  grid-area: 1 / 1; 
+  padding: 20px; 
+  width: inherit; 
+} 
+
+
+md-switch:last-of-type {
+    margin-left: 0px;
+}
+
+md-switch {
+    margin: 0px 0;
+}
+
+md-switch .md-container {
+    float: right;
+    margin-left: 25px;
+    margin-right: 25px;
+	margin-bottom: 5px;
+}
+
+md-switch .md-bar {
+    left: 1px;
+    width: 38px;
+    top: 5px;
+    height: 21px;
+    border-radius: 8px;
+    position: absolute;
+}
+
+md-switch .md-thumb {
+    margin: 0;
+    outline: none;
+    height: 22px;
+    width: 22px;
+    box-shadow: }
+.help-block{
+	
+	    font-size: 12px;
+    background: white;
+    border: #101010;
+    border-width: 2px;
+    colour: red;
+    color: red;
+    border-top: #ccc 1px solid;
+    border-right: #ccc 1px solid;
+    border-bottom: #777 1px solid;
+    border-left: #777 1px solid;
+}
+

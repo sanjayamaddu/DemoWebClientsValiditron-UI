@@ -1,0 +1,150 @@
+<p style="padding:1% 2%;" class="ng-scope">This tool is used to simulate the Future Health Today process of retreiving and storing CovidCare alert data from
+a FHIR server. Click <b>Fetch new alerts</b> to retreive new CovidCare alert data for the clinic <b>{{clinicName}}</b> and store it in a local MariaDB database.</p>
+
+<div class="form-group col-md-12 text-center" style="margin-bottom: 5px;">
+ <a  class="btn btn-ark text-center" ng-click="vm.fetchNewAlerts()" style="padding: 12px 14px;font-size: 16px;">Fetch new alerts</a>
+ </div>
+
+</div>
+
+<div class="form-group col-md-12 text-left" >
+  <a ui-sref="subjects.add" class="btn btn-ark ">Set referral clinic</a>
+</div>
+
+</div>
+<div style="    display: inline-block;
+    border-style: ridge;
+    border-width: 3px;
+    padding: 15px;
+    /* margin-left: 50px; */
+    border-radius: 5px;">
+
+
+<div class=" row" >
+ <div class=" col-md-4" >
+<div class=" row form-horizontal">      
+       
+        <div class="form-group "  style="font-size:14px">
+            <label for="pid" class="control-label field_name2 col-xs-4 col-sm-4 col-md-3">Name:</label>
+            <div class="col-md-8">
+                    <input class="form-control" id="pid" ng-model="vm.search.name"/>
+            </div>
+        </div>
+		</div>
+		</div>
+		<div class=" col-md-4" >
+<div class=" row form-horizontal"> 
+		<div class="form-group  " style="font-size:14px">
+            <label for="pid" class="control-label field_name2 col-xs-4 col-sm-4 col-md-3">Email:</label>
+            <div class="col-md-8">
+                    <input class="form-control" id="pid" ng-model="vm.search.email"/>
+            </div>
+        </div>
+		</div>
+        </div>
+		<div class=" col-md-4" >
+<div class=" row form-horizontal"> 
+		<div class="form-group " style="font-size:14px">
+            <label for="pid" class="control-label field_name2 col-xs-4 col-sm-4 col-md-3">Phone:</label>
+            <div class="col-md-8">
+                    <input class="form-control" id="pid" ng-model="vm.search.phone" />
+            </div>
+        </div>
+		</div>
+        </div>
+		
+		</div>
+		<div class=" row" >
+ <div class=" col-md-4" >
+ <div class=" row form-horizontal">  
+		<div class="form-group " style="font-size:14px">
+            <label for="pid" class="control-label field_name2 col-xs-4 col-sm-4 col-md-3">Vital sign alert:</label>
+            <div class="col-md-8">
+                    <select name="consentStatusName" ng-model="vm.search.vitalSignAlertCode" class="form-control" ng-options="x for x in vitalsignalertList" ></select>
+
+            </div>
+        </div>
+		 </div>
+        </div>
+		<div class=" col-md-4" >
+ <div class=" row form-horizontal"> 
+		<div class="form-group " style="font-size:14px">
+            <label for="pid" class="control-label field_name2 col-xs-4 col-sm-4 col-md-3">Mental health alert:</label>
+            <div class="col-md-8">
+                    <select name="consentStatusName" ng-model="vm.search.mentalHealthAlertCode" class="form-control" ng-options="x for x in mentalhealthalertList" ></select>
+
+            </div>
+        </div>
+		 </div>
+        </div>
+		<div class=" col-md-4" >
+ <div class=" row form-horizontal"> 
+		<div class="form-group" style="font-size:14px">
+            			 <select name="consentStatusName" ng-model="vm.search.dateCondition" style ='width:100px' class="form-control col-xs-4 col-sm-4 col-md-3" ng-options="x for x in rangelist" ></select>
+
+            <div class="col-md-8">
+                        <md-datepicker ng-model = "vm.search.dateTime"  md-placeholder = "Enter date"  md-current-view="year"></md-datepicker>
+								
+            </div>
+        </div>
+ </div>
+        </div>
+		<div class="form-group col-md-12 text-center" >
+            <button class="btn btn-primary" ng-click="vm.searchAlerts()">Search</button>
+            <button class="btn btn-primary" ng-click="vm.clearAllFilter()">Clear filters</button>
+                </div>
+
+</div>
+
+<p style="padding-top:5;margin-bottom:5px" >Last update <b>{{ vm.lasupdateDate | date:'dd/MM/yyyy HH:mm:ss a'}}</b></p>
+<table class="table subjects-table table-striped">
+    <tr     style="background: rgb(255 255 255);font-size:14px">
+        <th>Check-in date/time  </th>
+        <th>CovidCare ID </th>
+        <th>Name</th>
+        <th>Email </th>
+        <th>Phone</th>
+	    <th>Postcode</th>
+        <th>Vital signs alert </th>
+		<th>Mental health alert</th>
+		
+       <!-- <th class="delete-column"></th> -->
+    </tr>
+
+<tr ng-repeat="subject in vm.subjects.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))">
+         
+		   <td>{{subject.checkinDateTime  | date:'dd/MM/yyyy hh:mm:ss a'}}</td>
+		   <td>{{subject.covidcareID}}</td>
+		   <td>{{subject.name}}</td>
+           <td>{{subject.email}}</td>
+	       <td>{{subject.phone}}</td>
+ 		   <td>{{subject.postcode}}</td>
+		   <td>{{subject.vitalsignAlert}}</td>
+		   <td>{{subject.mentalHealthAlert}}</td>
+      </tr>
+	 
+    </table>
+    <table>
+        <tr>
+            <td>
+                <pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()"
+                    class="pagination-sm" items-per-page="vm.itemsPerPage"></pagination>
+                <div ui-view class="view-side-form" style="text-align: center; padding-bottom: 24px;">
+                    View <select ng-model="vm.viewby" ng-change="vm.setItemsPerPage(vm.viewby)">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                    </select> records at a time.
+                </div>
+                <div style="padding-bottom: 24px;" >
+                    <a ng-click="vm.refresh()" style="cursor: pointer;" >Refresh</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+  <!-- View <select ng-model="vm.viewby" ng-change="vm.setItemsPerPage(vm.viewby)"><option value="3">3</option><option value="5">5</option><option value="10">10</option><option value="20">20</option><option value="30">30</option></select> records at a time.
+  <pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()" class="pagination-sm" items-per-page="vm.itemsPerPage"></pagination>
+
+<div ui-view class="view-side-form" style="text-align: center; padding-top: 15px;"></div>
+</div> -->

@@ -1,0 +1,52 @@
+<p style="padding-top:15px;margin-bottom:15px" class="ng-scope">This tool is used to simulate user check-ins that originate from the CovidCare app.Click <b>Create check-in</b> to send data for a new CovidCare check-in to the FHIR server.</p>
+<a ui-sref="relationships.add" style="margin-top:15px;margin-bottom:15px" class="btn btn-ark">Create check-in</a>
+<table class="table table-striped relationships-table">
+    <tr style="background: rgb(255 255 255);">
+        <th>Check-in ID </th>
+		<th>Check-in date-time </th>
+        <th>Prompted by </th>
+		<th>CovidCare ID  </th>
+		<th>Name </th>
+		<th>Vital signs alert  </th>
+		<th>Mental health alert </th>
+    </tr>
+
+
+	<tr ng-repeat="relationship in vm.relationships.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage)) " ng-hide="relationship.isRemoved">
+   	  <td><a ui-sref="relationships.edit({ id: relationship.checkInID })">{{relationship.checkInID}}</a></td>
+		  <td>{{relationship.checkinDateTime.substr(0,13) | date: 'dd/MM/yyyy'}}</td>
+          <td>{{relationship.reasonOrPromptedBy.substr(24,relationship.reasonOrPromptedBy.length)}}</td>
+		  <td>{{relationship.covidcareID}}</td>
+		  <td>{{relationship.patientName}}</td>
+		  <td>{{relationship.vitalSignAlert}}</td>
+		  <td>{{relationship.mentalHealthAlert}}</td>
+	  </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()"
+                class="pagination-sm" items-per-page="vm.itemsPerPage"></pagination>
+            <div ui-view class="view-side-form" style="text-align: center; padding-bottom: 24px;">
+                View <select ng-model="vm.viewby" ng-change="vm.setItemsPerPage(vm.viewby)">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                </select> records at a time.
+            </div>
+            <div style="padding-bottom: 24px;">
+                <a   ng-click="vm.refresh()" style="cursor: pointer;" >Refresh</a>
+            </div>
+        </td>
+    </tr>
+</table>
+  <!-- View <select ng-model="vm.viewby" ng-change="vm.setItemsPerPage(vm.viewby)"><option value="3">3</option><option value="5">5</option><option value="10">10</option><option value="20">20</option><option value="30">30</option></select> records at a time.
+  <pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()" class="pagination-sm" items-per-page="vm.itemsPerPage"></pagination>
+
+</table>
+<div >
+                   
+                    <a   ng-click="vm.refresh()" >Refresh</a>
+                </div>
+<div ui-view class="view-side-form" style="text-align: center; padding-top: 15px;"></div> -->
