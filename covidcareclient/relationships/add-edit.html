@@ -56,12 +56,15 @@
 				 <div class="form-group col-md-12  required" >
                     <label class="control-label" for="lastname">Respiratory rate (breaths/30s)</label>
 					
-                  <input type="number" class="form-control" 
+                    <input type="number" class="form-control" 
 					class="form-control" 
                   
                    ng-maxlength="10"  
                    id="respiratoryrate" 
                    name="respiratoryrate" 
+				   min="1"
+                  step="1"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                    ng-model="vm.respiratoryrate"
                    ng-required="true" ng-disabled="isDisabled"/>
 
@@ -94,7 +97,7 @@
                    id="temperature" 
                    name="temperature" 
                    ng-model="vm.temperature"
-                   ng-required="true" ng-disabled="isDisabled"/>
+                    ng-disabled="isDisabled"/>
                     
 		<p ng-show="IsTempraturePositive"
                                 class="help-block">Temperature must be a positive decimal number </p>	  			
@@ -117,8 +120,9 @@
                    id="oxygen" 
                    name="oxygen" 
                    ng-model="vm.oxygen"
-				   min="1"
+				   min="0"
                   step="1"
+				  max="100"
                   onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                    ng-disabled="isDisabled"/>
 							
@@ -143,7 +147,9 @@
 
 					
       </div>
-	  <div class="form-group col-md-12 required">
+	  <div class="form-group col-md-12 required ">
+
+      <!-- </div> style="margin-top:25px"> -->
                     <label  class="control-label" for="firstName">Shortness of breath</label>
                    <select name="vitalStatusName" required ng-model="vm.shortnessofbreath" class="form-control" ng-options="x for x in shortnessbreathlist" ng-disabled="isDisabled"></select>
 
@@ -188,11 +194,12 @@
         ng-options="x for x in worriedlist" ng-disabled="isDisabled"></select>
 
 </div>
-                <!-- <div style="border-style: double;    display: inline-block;margin-top:10px"> -->
-                 <div>
+               
+                 <!-- <div>
                     <fieldset>
-                        <legend style="font-size: 17px;width: 30%; text-align: left; padding-left: 5%;">Alert</legend>        
-                    <div class="form-group col-md-12 required" style="margin-top:20px">
+                        <legend style="font-size: 10px;width: 30%; text-align: left; padding-left: 5% ;font-weight:700;">Alerts</legend>         -->
+                    <div class="form-group col-md-12 required" > <!-- style="margin-top:45px"> -->
+                    
                         <label class="control-label" for="lastname" style="display:block">Vital signs alert</label>
                 
                         <select name="vitalStatusName" ng-model="vm.vitalsign" required class="form-control"
@@ -206,14 +213,17 @@
                             ng-options="x for x in mentalhealthalertlist" ng-disabled="isDisabled"></select>
                 
                     </div>
-                </fieldset> 
-                </div>
+                <!-- </fieldset>  -->
+                <!-- </div> -->
 </div>
  </div>  
+ <div ng-show="isSaveVisible" style="margin-top:10px">
+                    Complete all mandatory questions (marked with <span style="color: red">*</span>) to activate the <b>Save</b> button.
+                </div> 
 </div>
 <div class="form-group col-md-12" style="    margin-left: 15px;margin-top: 15px;">
                     <a class="btn btn-default" ui-sref="relationships">Close</a>
-                    <button class="btn btn-primary" ng-disabled="!userForm.$valid" ng-show="isSaveVisible" ng-click="vm.saveencounter()">Save</button>
+                    <button class="btn btn-primary" ng-disabled="!userForm.$valid" ng-show="isSaveVisible"  ng-click="vm.saveencounter()">Save</button>
                 </div>
 				<div class="form-group col-md-12 alert alert-danger fade in" ng-show="subject_error_show">
    

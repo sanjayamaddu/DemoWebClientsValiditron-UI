@@ -2,11 +2,24 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'ngAnimate','ngMaterial','ngMessages','ui.bootstrap'])
+        .module('app', ['ui.router', 'ngAnimate','ngMaterial','ngMessages','ui.bootstrap','ae-datetimepicker'])
         .config(config)
         .run(run);
 
-    function config($stateProvider, $urlRouterProvider) {
+    function config($stateProvider, $urlRouterProvider,$mdDateLocaleProvider) {
+
+        $mdDateLocaleProvider.formatDate = function(date) {
+            return date ? moment(date).format('L') : '';
+          };
+      
+          
+          $mdDateLocaleProvider.parseDate = function(dateString) {
+            var m = moment(dateString, 'L', true);
+            return m.isValid() ? m.toDate() : new Date(NaN);
+          };
+
+
+
         // default route
         $urlRouterProvider.otherwise("/");
 
@@ -32,7 +45,7 @@
 	}
 
     function run($rootScope, SubjectService) {
-          $rootScope.clinicID=1858;
+          $rootScope.clinicID=2152;
           $rootScope.clinicName="Kane Medical";
         // track current state for active tab
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {

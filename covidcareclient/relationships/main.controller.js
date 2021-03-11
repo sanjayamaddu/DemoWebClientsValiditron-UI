@@ -5,7 +5,7 @@
         .module('app')
         .controller('Relationships.MainController', Controller);
 
-    function Controller($scope,$filter, RelationshipService) {
+    function Controller($scope,$filter, RelationshipService,$state) {
         var vm = this;
 
         vm.relationships = [];
@@ -25,11 +25,15 @@
             loadRelationships();
 
             // reload products when updated
-            $scope.$on('relationships-updated', loadRelationships );
+            $scope.$on('relationships-updated', refresh );
         }
 		function  refresh(){
 			vm.relationships=[];
 			loadRelationships(); 
+			
+
+
+			
 		};
 
         function loadRelationships() {

@@ -1,5 +1,7 @@
-<p style="padding-top:15px;margin-bottom:15px" class="ng-scope">This tool is used to simulate user check-ins that originate from the CovidCare app.Click <b>Create check-in</b> to send data for a new CovidCare check-in to the FHIR server.</p>
+<p style="padding-top: 2%;padding-left: 2%;padding-right: 1%;" class="ng-scope">This tool is used to simulate user check-ins that originate from the CovidCare app. Click <b>Create check-in</b> to send data for a new CovidCare check-in to the FHIR server.</p>
 <a ui-sref="relationships.add" style="margin-top:15px;margin-bottom:15px" class="btn btn-ark">Create check-in</a>
+ <a   ng-click="vm.refresh()" style="margin-top:15px;margin-bottom:15px;cursor: pointer;" class="btn btn-ark">Refresh table</a>
+           
 <table class="table table-striped relationships-table">
     <tr style="background: rgb(255 255 255);">
         <th>Check-in ID </th>
@@ -14,8 +16,8 @@
 
 	<tr ng-repeat="relationship in vm.relationships.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage)) " ng-hide="relationship.isRemoved">
    	  <td><a ui-sref="relationships.edit({ id: relationship.checkInID })">{{relationship.checkInID}}</a></td>
-		  <td>{{relationship.checkinDateTime.substr(0,13) | date: 'dd/MM/yyyy'}}</td>
-          <td>{{relationship.reasonOrPromptedBy.substr(24,relationship.reasonOrPromptedBy.length)}}</td>
+		  <td>{{relationship.checkinDateTime | date: 'dd/MM/yyyy HH:MM':'AEDT'}}</td>
+          <td>{{relationship.reasonOrPromptedBy.substr(24,relationship.reasonOrPromptedBy.length)==='dashboard'?'Dashboard':'Push notification' }}</td>
 		  <td>{{relationship.covidcareID}}</td>
 		  <td>{{relationship.patientName}}</td>
 		  <td>{{relationship.vitalSignAlert}}</td>
@@ -35,9 +37,7 @@
                     <option value="50">50</option>
                 </select> records at a time.
             </div>
-            <div style="padding-bottom: 24px;">
-                <a   ng-click="vm.refresh()" style="cursor: pointer;" >Refresh</a>
-            </div>
+           
         </td>
     </tr>
 </table>

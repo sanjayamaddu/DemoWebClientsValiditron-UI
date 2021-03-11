@@ -5,7 +5,7 @@
         .module('app')
         .factory('RelationshipService', Service);
     var REST_SERVICE_URI = 'https://demo.validitron.com.au/covidcareservice/api/';
-	//var REST_SERVICE_URI = 'http://localhost:8080/covidcare/';
+	//var REST_SERVICE_URI = 'http://localhost:8080/covidcareservice/api/';
 	var REST_SERVICE_URI_RESOURCE = 'getencounterlistasdisplayrow/';
 	var REST_SERVICE_URI_RESOURCE_CREATE = 'postencounterobservationsanddetectedissues/';
 	var GETENCOUNTERBYCOVIDCAREID='getencounterbyresourceid/';

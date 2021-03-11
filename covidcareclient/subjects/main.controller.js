@@ -41,7 +41,7 @@
             .then(
             function(d) {
                 vm.subjects = d;
-				vm.totalItems = vm.subjects.length;
+         		vm.totalItems = vm.subjects.length;
             },
             function(errResponse){
                 console.error('Error while fetching Users');

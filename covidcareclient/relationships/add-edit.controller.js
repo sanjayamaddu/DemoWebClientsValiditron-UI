@@ -7,7 +7,7 @@
 		
 
 
-    function Controller($scope, $state, $stateParams,RelationshipService,SubjectService) {
+    function Controller($scope, $state, $timeout,$stateParams,RelationshipService,SubjectService) {
         var vm = this;
 
         $scope.apetheliclistValues = ["NOTATALL","SEVERALDAYS","MORETHANHALFDAYS"];
@@ -66,7 +66,7 @@
            		if ($stateParams.id) {
 		$scope.isSaveVisible = false;
 		$scope.isDisabled = true;
-                vm.title = 'Create CovidCare Check-in';
+                vm.title = 'CovidCare Check-in Details';
                	RelationshipService.fetchRelationshipByID($stateParams.id).then(
             function(d) {
                 vm.encounter = d;
@@ -339,6 +339,10 @@
             function(d) {
                 vm.encounter = d;
 				$scope.subject_error_show=false;
+				//$timeout(function(){
+				//$state.go('relationships', {}, { reload: true });
+			//},200);
+			
 				$state.go('relationships');
 				 // redirect to subjects view
 				 $scope.$emit('relationships-updated');

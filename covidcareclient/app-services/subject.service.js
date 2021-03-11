@@ -4,12 +4,13 @@
     angular
         .module('app')
         .factory('SubjectService', Service);
-     var REST_SERVICE_URI = 'https://demo.validitron.com.au/covidcareservice/api/';
-	//var REST_SERVICE_URI = 'http://localhost:8080/covidcare/';
+    var REST_SERVICE_URI = 'https://demo.validitron.com.au/covidcareservice/api/';
+	//var REST_SERVICE_URI = 'http://localhost:8080/covidcareservice/api/';
 	 var REST_SERVICE_URI_RESOURCE = 'getpatients';
 	 var REST_SERVICE_URI_REFERRALS='getreferrals/';
 	 var REST_SERVICE_URI_RESOURCE_CREATE = 'postpatient/';
 	  var GETPATIENTSBYCOVIDCAREID='getpatientbyreferralandcovidcareid/';
+	  var GETNEXTCOVIDCAREID='getnaxtavailablacovidcareid'
       //new call to validate covidcare id
       var GETCOVIDCAREIDS='getcovidcareids';
 	
@@ -22,6 +23,7 @@
 		service.createSubject = createSubject;
 		service.fetchAllClinics = fetchAllClinics;
 		service.fetchAllCovidCareIDs=fetchAllCovidCareIDs;
+		service.getNextCovidCareID=getNextCovidCareID;
 		//service.updateSubject = updateSubject;
 		//service.fetchAllSiblingsBySubject=fetchAllSiblingsBySubject;
 		//service.fetchAllSubjectsWithSiblings=fetchAllSubjectsWithSiblings;
@@ -34,6 +36,21 @@
 	function fetchSubjectByID(refID,id) {
         var deferred = $q.defer();
         $http.get(REST_SERVICE_URI+GETPATIENTSBYCOVIDCAREID+refID+'/'+id
+			 )
+            .then(
+            function (response) {
+                deferred.resolve(response.data);
+            },
+            function(errResponse){
+                console.error('Error while fetching Users');
+                deferred.reject(errResponse);
+            }
+        );
+        return deferred.promise;
+    }
+function getNextCovidCareID() {
+        var deferred = $q.defer();
+        $http.get(REST_SERVICE_URI+GETNEXTCOVIDCAREID
 			 )
             .then(
             function (response) {

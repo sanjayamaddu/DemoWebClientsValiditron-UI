@@ -91,10 +91,13 @@
 		
 		$scope.symptomChange=function() {
         $scope.symptomChangeV=true;;
+		//vm.symptomstartDate=new Date();
     };
 		
 		$mdDateLocale.formatDate = function(date) {
-      return date ? moment(date).format('L') : '';
+     // return date ? moment(date).format('L') : '';
+	 return date ? moment(date).format('DD/MM/YYYY') : '';
+
     };
 
     /**
@@ -102,7 +105,8 @@
      * @returns {Date} JavaScript Date object created from the provided dateString
      */
     $mdDateLocale.parseDate = function(dateString) {
-      var m = moment(dateString, 'L', true);
+      var m = moment(dateString, 'DD/MM/YYYY', true);
+
 	  if (!m.isValid()){
 				$scope.IsSymptomIncorrectFormat=true;
 			}
@@ -171,6 +175,7 @@
 			if ($stateParams.id) {
 				$scope.isSaveVisible = false;
 				$scope.isChckinVisible = true;
+				$scope.isSytemStartDateDisabled=true;
 				$scope.isDisabled = true;
 				$scope.IsCovidCareIDExist=false;
 				vm.title = 'CovidCare User Details';
@@ -196,6 +201,20 @@
 
 			} else {
 				$scope.isDisabled = false;
+				SubjectService.getNextCovidCareID().then(
+					function (d) {
+						
+
+						vm.subject.covidCareId = d.id;
+						
+					},
+					function (errResponse) {
+						console.error('Error while fetching Users');
+						$scope.subject_error = errResponse.data;
+						$scope.subject_error_show = true;
+					}
+				);
+				
 
 			}
 			//vm.subjects = SubjectService.fetchAllSubjects();

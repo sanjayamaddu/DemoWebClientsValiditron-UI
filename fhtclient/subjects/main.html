@@ -7,19 +7,19 @@ a FHIR server. Click <b>Fetch new alerts</b> to retreive new CovidCare alert dat
 
 </div>
 
-<div class="form-group col-md-12 text-left" >
-  <a ui-sref="subjects.add" class="btn btn-ark ">Set referral clinic</a>
-</div>
+
 
 </div>
-<div style="    display: inline-block;
-    border-style: ridge;
-    border-width: 3px;
+<div style="    display: inline-block;" 
+    >
+
+<div style="display:block;border-style: ridge;
+    /*border-width: 3px; */
     padding: 15px;
     /* margin-left: 50px; */
-    border-radius: 5px;">
-
-
+    border-radius: 5px;
+	    border-width: 1px;
+    border-color: darkgrey;margi-bottom:10px">
 <div class=" row" >
  <div class=" col-md-4" >
 <div class=" row form-horizontal">      
@@ -54,11 +54,12 @@ a FHIR server. Click <b>Fetch new alerts</b> to retreive new CovidCare alert dat
         </div>
 		
 		</div>
-		<div class=" row" >
+		<div class=" row"
+		>
  <div class=" col-md-4" >
  <div class=" row form-horizontal">  
 		<div class="form-group " style="font-size:14px">
-            <label for="pid" class="control-label field_name2 col-xs-4 col-sm-4 col-md-3">Vital sign alert:</label>
+            <label for="pid" class="control-label field_name2 col-xs-4 col-sm-4 col-md-3">Vital signs alert:</label>
             <div class="col-md-8">
                     <select name="consentStatusName" ng-model="vm.search.vitalSignAlertCode" class="form-control" ng-options="x for x in vitalsignalertList" ></select>
 
@@ -82,29 +83,33 @@ a FHIR server. Click <b>Fetch new alerts</b> to retreive new CovidCare alert dat
 		<div class="form-group" style="font-size:14px">
             			 <select name="consentStatusName" ng-model="vm.search.dateCondition" style ='width:100px' class="form-control col-xs-4 col-sm-4 col-md-3" ng-options="x for x in rangelist" ></select>
 
-            <div class="col-md-8">
-                        <md-datepicker ng-model = "vm.search.dateTime"  md-placeholder = "Enter date"  md-current-view="year"></md-datepicker>
+            <div class="col-md-8" style="padding-left:0px">
+                        <md-datepicker ng-model = "vm.search.dateTime"  md-placeholder = "Enter date"  md-current-view="day"></md-datepicker>
 								
             </div>
         </div>
  </div>
         </div>
-		<div class="form-group col-md-12 text-center" >
+		<div class="form-group col-md-12 text-center" style="margin-bottom:0px">
             <button class="btn btn-primary" ng-click="vm.searchAlerts()">Search</button>
             <button class="btn btn-primary" ng-click="vm.clearAllFilter()">Clear filters</button>
                 </div>
 
 </div>
+</div>
+<div class="form-group col-md-12 text-left" style="margin-top:10px;padding-left: 0px" >
+  <a ui-sref="subjects.add" class="btn btn-ark ">Set referral clinic</a>
+  <p style="float:right;padding-top:5px;margin-bottom:5px" >Last update: {{ vm.lasupdateDate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
+</div>
 
-<p style="padding-top:5;margin-bottom:5px" >Last update <b>{{ vm.lasupdateDate | date:'dd/MM/yyyy HH:mm:ss a'}}</b></p>
 <table class="table subjects-table table-striped">
     <tr     style="background: rgb(255 255 255);font-size:14px">
-        <th>Check-in date/time  </th>
+        <th>Check-in date-time  </th>
         <th>CovidCare ID </th>
         <th>Name</th>
         <th>Email </th>
         <th>Phone</th>
-	    <th>Postcode</th>
+	    <!-- <th>Postcode</th> -->
         <th>Vital signs alert </th>
 		<th>Mental health alert</th>
 		
@@ -113,12 +118,12 @@ a FHIR server. Click <b>Fetch new alerts</b> to retreive new CovidCare alert dat
 
 <tr ng-repeat="subject in vm.subjects.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))">
          
-		   <td>{{subject.checkinDateTime  | date:'dd/MM/yyyy hh:mm:ss a'}}</td>
+		   <td>{{subject.checkinDateTime  | date:'dd/MM/yyyy hh:mm'}}</td>
 		   <td>{{subject.covidcareID}}</td>
 		   <td>{{subject.name}}</td>
            <td>{{subject.email}}</td>
 	       <td>{{subject.phone}}</td>
- 		   <td>{{subject.postcode}}</td>
+ 		   <!-- <td>{{subject.postcode}}</td> -->
 		   <td>{{subject.vitalsignAlert}}</td>
 		   <td>{{subject.mentalHealthAlert}}</td>
       </tr>
@@ -137,9 +142,9 @@ a FHIR server. Click <b>Fetch new alerts</b> to retreive new CovidCare alert dat
                         <option value="50">50</option>
                     </select> records at a time.
                 </div>
-                <div style="padding-bottom: 24px;" >
+                <!--<div style="padding-bottom: 24px;" >
                     <a ng-click="vm.refresh()" style="cursor: pointer;" >Refresh</a>
-                </div>
+                </div>-->
             </td>
         </tr>
     </table>

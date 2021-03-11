@@ -6,6 +6,16 @@
 
                 <div class="row">
                     <div class=" col-md-4">
+					
+					 <div class="form-group col-md-12"
+                            ng-class="{ 'has-error' : userForm.subjectUID.$dirty && userForm.subjectUID.$error.required }">
+                            <label class="control-label" for="subjectUID">CovidCare ID (auto-generated)</label>
+                            <input type="text" id="subjectUID" name="subjectUID" class="form-control"
+                                ng-disabled="true" ng-model="vm.subject.covidCareId" required />
+								<p ng-show="isSaveVisible && IsCovidCareIDExist"
+                                class="help-block">CovidCare ID already in use </p>	      
+                            
+                        </div>
 		
 					<div class="form-group col-md-12 required">
 					 <label class="control-label" for="lastname" style="display:block">Registration date-time</label>
@@ -26,15 +36,7 @@
 
                        
 
-                        <div class="form-group col-md-12 required"
-                            ng-class="{ 'has-error' : userForm.subjectUID.$dirty && userForm.subjectUID.$error.required }">
-                            <label class="control-label" for="subjectUID">CovidCare ID</label>
-                            <input type="text" id="subjectUID" name="subjectUID" class="form-control"
-                                ng-disabled="isDisabled" ng-model="vm.subject.covidCareId" required />
-								<p ng-show="isSaveVisible && IsCovidCareIDExist"
-                                class="help-block">CovidCare ID already in use </p>	      
-                            
-                        </div>
+                       
                         <div class="form-group col-md-12 required"
                             ng-class="{ 'has-error' : userForm.name.$dirty && userForm.name.$error.required }">
                             <label class="control-label" for="name">Name</label>
@@ -102,96 +104,96 @@
 
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group col-md-12 required">
+                        <div class="form-group col-md-12 required" style="    margin-bottom: 15px;">
                             <label class="control-label" for="firstName">Contact opt out</label>
-							<div style="display: flex;    margin-left: 55px;    border: rgb(230 230 230);    border-style: solid;    margin-right: 56px;    border-radius: 5px;    font-family: sans-serif;"> 
-							<label class="" for="firstName" style="color: #5c778e;">No</label>
+							<div class="toggestyle"> 
+							<label class="" for="firstName" style="    font-weight: 400;color: #5c778e;">No</label>
 							<md-switch ng-model="vm.contactoptout" aria-label="Switch 1" ng-disabled="isDisabled">
                             </md-switch>
-							<label class="" for="firstName" style="color: #967f7f">Yes</label>
+							<label class="" for="firstName" style="    font-weight: 400;color: #967f7f">Yes</label>
 							</div>
                             
                         </div>
-                        <div class="form-group col-md-12 required">
+                        <div class="form-group col-md-12 required" style="    margin-bottom: 15px;">
                             <label class="control-label" for="firstName">Lung condition</label>
-							<div style="display: flex;    margin-left: 55px;    border: rgb(230 230 230);    border-style: solid;    margin-right: 56px;    border-radius: 5px;    font-family: sans-serif;"> 
-							<label class="" for="firstName"  style="color: #5c778e;">No</label>
+							<div class="toggestyle"> 
+							<label class="" for="firstName"  style="    font-weight: 400;color: #5c778e;">No</label>
 							 <md-switch ng-model="vm.lungcondtition" aria-label="Switch 1" ng-disabled="isDisabled">
                             </md-switch>
-							<label class="" for="firstName" style="color: #967f7f">Yes</label>
+							<label class="" for="firstName" style="    font-weight: 400;color: #967f7f">Yes</label>
 							</div>
                            
                         </div>
-                        <div class="form-group col-md-12 required">
+                        <div class="form-group col-md-12 required" style="    margin-bottom: 15px;">
                             <label class="control-label" for="firstName">Cardiovascular condition</label>
-							<div style="display: flex;    margin-left: 55px;    border: rgb(230 230 230);    border-style: solid;    margin-right: 56px;    border-radius: 5px;    font-family: sans-serif;"> 
-							<label class="" for="firstName" style="color: #5c778e;">No</label>
+							<div class="toggestyle"> 
+							<label class="" for="firstName" style="    font-weight: 400;color: #5c778e;">No</label>
 							 <md-switch ng-model="vm.cardcondtition" aria-label="Switch 1" ng-disabled="isDisabled">
 
                             </md-switch>
-							<label class="" for="firstName" style="color: #967f7f">Yes</label>
+							<label class="" for="firstName" style="    font-weight: 400;color: #967f7f">Yes</label>
 							</div>
                            
 
                         </div>
-                        <div class="form-group col-md-12 required">
+                        <div class="form-group col-md-12 required" style="    margin-bottom: 15px;">
                             <label class="control-label" for="firstName">Smoker</label>
-							<div style="display: flex;    margin-left: 55px;    border: rgb(230 230 230);    border-style: solid;    margin-right: 56px;    border-radius: 5px;    font-family: sans-serif;"> 
-							<label class="" for="firstName" style="color: #5c778e;">No</label>
+							<div class="toggestyle"> 
+							<label class="" for="firstName" style="    font-weight: 400;color: #5c778e;">No</label>
 							 <md-switch ng-model="vm.smoker" aria-label="Switch 1" ng-disabled="isDisabled">
 
                             </md-switch>
-							<label class="" for="firstName" style="color: #967f7f">Yes</label>
+							<label class="" for="firstName" style="    font-weight: 400;color: #967f7f">Yes</label>
 							</div>
                            
 
 
                         </div>
-                        <div class="form-group col-md-12 required">
+                        <div class="form-group col-md-12 required" style="    margin-bottom: 15px;">
                             <label class="control-label" for="firstName">Diabetes</label>
-							<div style="display: flex;    margin-left: 55px;    border: rgb(230 230 230);    border-style: solid;    margin-right: 56px;    border-radius: 5px;    font-family: sans-serif;"> 
-							<label class="" for="firstName" style="color: #5c778e;">No</label>
+							<div class="toggestyle"> 
+							<label class="" for="firstName" style="    font-weight: 400;color: #5c778e;">No</label>
 							 <md-switch ng-model="vm.diabetes" aria-label="Switch 1" ng-disabled="isDisabled">
                             </md-switch>
-							<label class="" for="firstName" style="color: #967f7f">Yes</label>
+							<label class="" for="firstName" style="    font-weight: 400;color: #967f7f">Yes</label>
 							</div>
                            
 
 
                         </div>
-                        <div class="form-group col-md-12 required">
+                        <div class="form-group col-md-12 required" style="    margin-bottom: 15px;">
                             <label class="control-label" for="firstName">Overweight</label>
-							<div style="display: flex;    margin-left: 55px;    border: rgb(230 230 230);    border-style: solid;    margin-right: 56px;    border-radius: 5px;    font-family: sans-serif;"> 
-							<label class="" for="firstName" style="color: #5c778e;">No</label>
+							<div class="toggestyle"> 
+							<label class="" for="firstName" style="    font-weight: 400;color: #5c778e;">No</label>
 							  <md-switch ng-model="vm.overweight" aria-label="Switch 1" ng-disabled="isDisabled">
 
                             </md-switch>
-							<label class="" for="firstName" style="color: #967f7f">Yes</label>
+							<label class="" for="firstName" style="    font-weight: 400;color: #967f7f">Yes</label>
 							</div>
                           
 
 
                         </div>
-                        <div class="form-group col-md-12 required">
+                        <div class="form-group col-md-12 required" style="    margin-bottom: 15px;">
                             <label class="control-label" for="firstName">Hypertension</label>
-							<div style="display: flex;    margin-left: 55px;    border: rgb(230 230 230);    border-style: solid;    margin-right: 56px;    border-radius: 5px;    font-family: sans-serif;"> 
-							<label class="" for="firstName" style="color: #5c778e;">No</label>
+							<div class="toggestyle"> 
+							<label class="" for="firstName" style="    font-weight: 400;color: #5c778e;">No</label>
 							<md-switch ng-model="vm.hypertenstion" aria-label="Switch 1" ng-disabled="isDisabled"> </md-switch>
-							<label class="" for="firstName" style="color: #967f7f">Yes</label>
+							<label class="" for="firstName" style="    font-weight: 400;color: #967f7f">Yes</label>
 							</div>
                             
 
                            
 
                         </div>
-                        <div class="form-group col-md-12 required">
+                        <div class="form-group col-md-12 required" style="    margin-bottom: 15px;">
                             <label class="control-label" for="firstName">Pregnant</label>
-							<div style="display: flex;    margin-left: 55px;    border: rgb(230 230 230);    border-style: solid;    margin-right: 56px;    border-radius: 5px;    font-family: sans-serif;"> 
-							<label class="" for="firstName" style="color: #5c778e;">No</label>
+							<div class="toggestyle"> 
+							<label class="" for="firstName" style="    font-weight: 400;color: #5c778e;">No</label>
 							 <md-switch ng-model="vm.pregnant" aria-label="Switch 1" ng-disabled="isDisabled">
 
                             </md-switch>
-							<label class="" for="firstName" style="color: #967f7f;">Yes</label>
+							<label class="" for="firstName" style="    font-weight: 400;color: #967f7f;">Yes</label>
 							</div>
                            
 
@@ -227,8 +229,8 @@
                         <!-- <div style="border-style: ridge;border-radius: 10px; display: inline-block;margin-top:200px"> -->
                         <div>
                             <fieldset>
-                                <legend style="font-size: 12px;width: 30%; text-align: left; padding-left: 5%;">Covid-19</legend>
-                                <div class="form-group col-md-12">
+                                <legend style="font-size: 10px;width: 30%; text-align: left; padding-left: 5%;padding-top: 15px;font-weight:300">COVID-19</legend>
+                                <div class="form-group col-md-12" style="margin-top:20px">
                                      <!-- style="margin-top:20px"> -->
                             
                                     <label style="display:block" for="vitalStatusName">Symptom start date</label>
@@ -237,7 +239,7 @@
 									name="symptomstartDate" 
 									ng-model="vm.symptomstartDate" 
 									md-placeholder="Enter date" 
-									md-current-view="year"
+									md-current-view="day"
                                     ng-disabled="isDisabled" 
 									ng-required="!isSytemStartDateDisabled" 
 									md-max-date="vm.maxDate"
@@ -254,13 +256,13 @@
      
       </span>
 	                                        
-                                <div class="form-group col-md-12" ng-class="{ 'required' : !isSytemStartDateDisabled }">
-                                    <label class="control-label" for="lastname" style="display:block">Test date</label>
+                                <div class="form-group col-md-12"  style="    margin-bottom: 10px;" ng-class="{ 'required' : !isSytemStartDateDisabled }">
+                                    <label class="control-label" for="lastname" style="display:block;    margin-top: 10px;    ">Test date</label>
                             
                                     <md-datepicker id="testdate" 
 									ng-model="vm.testDate" 
 									md-placeholder="Enter date"
-									md-current-view="year"
+									md-current-view="day"
                                     ng-disabled="isSytemStartDateDisabled" 
 									ng-required="!isSytemStartDateDisabled" 
 									md-max-date="vm.maxDate"
@@ -276,7 +278,7 @@
       
                                 </div>
                             
-                                <div class="form-group col-md-12 " ng-class="{ 'required' : !isSytemStartDateDisabled }">
+                                <div style="margin-bottom: 0px;" class="form-group col-md-12 " ng-class="{ 'required' : !isSytemStartDateDisabled }">
                                     <label class="control-label" for="vitalStatusName">Test result</label>
                                     <select name="vitalStatusName" ng-model="vm.testResult" class="form-control" ng-options="x for x in testresults"
                                         ng-disabled="isSytemStartDateDisabled" ng-required="isSytemStartEntered"></select>
@@ -293,7 +295,7 @@
         <div class="form-group col-md-12" style="    margin-left: 15px;margin-top: 15px;">
             <a class="btn btn-default" ui-sref="subjects">Close</a>
             <button class="btn btn-primary" ng-disabled="!userForm.$valid"   ng-click="vm.saveSubject()"  ng-show="isSaveVisible">Save</button>
-            <button class="btn btn-primary" ng-click="vm.createCheckin()" ng-show="isChckinVisible">Create checkin</button>
+            <button class="btn btn-primary" ng-click="vm.createCheckin()" ng-show="isChckinVisible">Create check-in</button>
         </div>
         <div class="form-group col-md-12 help-block fade in" ng-show="subject_error_show">
 

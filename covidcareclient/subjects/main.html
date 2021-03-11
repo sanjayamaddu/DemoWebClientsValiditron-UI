@@ -1,7 +1,8 @@
-<p style="padding-top:15px;margin-bottom:15px" class="ng-scope">This tool is used to simulate user registrations that
+<p style="padding-top: 2%;padding-left: 2%;padding-right: 1%;" class="ng-scope">This tool is used to simulate user registrations that
     originate from the CovidCare app.
     Click <b>Register user</b> to send data for a new CovidCare user to the FHIR server.</p>
 <a ui-sref="subjects.add" style="margin-top:15px;margin-bottom:15px" class="btn btn-ark">Register user</a>
+<a   ng-click="vm.refresh()" style="margin-top:15px;margin-bottom:15px;cursor: pointer" class="btn btn-ark" >Refresh table</a>
 
 
 <table  class="table subjects-table table-striped">
@@ -22,7 +23,7 @@
         ng-repeat="subject in vm.subjects.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))">
         <td><a ui-sref="subjects.edit({refid:subject.covidOrganization.referralClinicID,id: subject.covidCareId })">{{subject.covidCareId}}</a></td>
         <td>{{subject.covidOrganization.referralClinicName}}</td>
-        <td>{{subject.registerdDate.substr(0,13) | date: 'dd/MM/yyyy'}}</td>
+        <td>{{subject.registerdDate | date: 'dd/MM/yyyy':'AEDT'}}</td>
         <td>{{subject.name}}</td>
         <td>{{subject.gender}}</td>
         <td>{{subject.age}}</td>
@@ -44,9 +45,9 @@
                     <option value="50">50</option>
                 </select> records at a time.
             </div>
-            <div style="padding-bottom: 24px;" >
+            <!--<div style="padding-bottom: 24px;" >
                 <a   ng-click="vm.refresh()" style="cursor: pointer;">Refresh</a>
-            </div>
+            </div>!-->
         </td>
     </tr>
 </table>

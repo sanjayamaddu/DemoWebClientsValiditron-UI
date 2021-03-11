@@ -2,3 +2,7 @@
     float: left;
     margin-bottom: -31px;
 }
+
+.nav-tabs>li>a{
+	line-height:0px
+}

@@ -54,6 +54,7 @@
        setOrganisionIDByName(vm.selectedreferralClinicName);
        $rootScope.clinicName=vm.selectedreferralClinicName;
        $state.go('subjects');
+	   $scope.$emit('subjects-updated');
 
         }
     }

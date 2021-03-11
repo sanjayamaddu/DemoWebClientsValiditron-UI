@@ -7,7 +7,7 @@
 		.run(run)
 		
     function config($stateProvider, $urlRouterProvider,$mdDateLocaleProvider) {
-	/**	
+	
 	$mdDateLocaleProvider.formatDate = function(date) {
       return date ? moment(date).format('L') : '';
     };
@@ -17,7 +17,7 @@
       var m = moment(dateString, 'L', true);
       return m.isValid() ? m.toDate() : new Date(NaN);
     };
-*/
+
 
         // default route
         $urlRouterProvider.otherwise("/");
