@@ -13,6 +13,7 @@
 	  var GETNEXTCOVIDCAREID='getnaxtavailablacovidcareid'
       //new call to validate covidcare id
       var GETCOVIDCAREIDS='getcovidcareids';
+      var GETSESSIONSFHIRLOG='getsessionfhirlog/';
 	
     function Service($filter,$http,$q) {
 
@@ -24,14 +25,30 @@
 		service.fetchAllClinics = fetchAllClinics;
 		service.fetchAllCovidCareIDs=fetchAllCovidCareIDs;
 		service.getNextCovidCareID=getNextCovidCareID;
+        service.fetchSessionsByID = fetchSessionsByID;
 		//service.updateSubject = updateSubject;
 		//service.fetchAllSiblingsBySubject=fetchAllSiblingsBySubject;
 		//service.fetchAllSubjectsWithSiblings=fetchAllSubjectsWithSiblings;
       
 
         return service;
+   
 
-        
+	function fetchSessionsByID(refID) {
+        var deferred = $q.defer();
+        $http.get(REST_SERVICE_URI+GETSESSIONSFHIRLOG+refID
+			 )
+            .then(
+            function (response) {
+                deferred.resolve(response.data);
+            },
+            function(errResponse){
+                console.error('Error while fetching Users');
+                deferred.reject(errResponse);
+            }
+        );
+        return deferred.promise;
+    }   
 	
 	function fetchSubjectByID(refID,id) {
         var deferred = $q.defer();

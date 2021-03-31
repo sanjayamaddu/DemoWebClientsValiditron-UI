@@ -37,15 +37,15 @@
                     controllerAs: 'vm'
                 })
           .state('subjects.edit', {
-                    url: '/edit/:id',
-                    templateUrl: 'subjects/add-edit.html',
-                    controller: 'Subjects.AddEditController',
+                    url: '/edit',
+                    templateUrl: 'subjects/edit.html',
+                    controller: 'Subjects.EditController',
                     controllerAs: 'vm'
                 });
 	}
 
     function run($rootScope, SubjectService) {
-          $rootScope.clinicID=2152;
+          $rootScope.clinicID=1858;
           $rootScope.clinicName="Kane Medical";
         // track current state for active tab
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {

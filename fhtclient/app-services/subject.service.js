@@ -9,7 +9,7 @@
 	 var REST_SERVICE_URI_RESOURCE = 'getalertsbysearchcriteria/';
 	 var FETCHNEWALERTS='fetchnewalerts/';
      var REST_SERVICE_URI_REFERRALS='getreferrals/';
-	
+	var GETSESSIONSFHIRLOG='getsessionfhirlog/';
     function Service($filter,$http,$q) {
 
         var service = {};
@@ -17,11 +17,25 @@
         service.fetchAllClinics = fetchAllClinics;
 		service.searchAlerts = searchAlerts;
 		service.fetchNewAlerts=fetchNewAlerts;
-
+        service.fetchSessionsByID = fetchSessionsByID;
         return service;
 
         
-	
+	function fetchSessionsByID(refID) {
+        var deferred = $q.defer();
+        $http.get(REST_SERVICE_URI+GETSESSIONSFHIRLOG+refID
+			 )
+            .then(
+            function (response) {
+                deferred.resolve(response.data);
+            },
+            function(errResponse){
+                console.error('Error while fetching Users');
+                deferred.reject(errResponse);
+            }
+        );
+        return deferred.promise;
+    }
 	function searchAlerts(subject) {
 		 var deferred = $q.defer();
         $http.post(REST_SERVICE_URI+REST_SERVICE_URI_RESOURCE, subject

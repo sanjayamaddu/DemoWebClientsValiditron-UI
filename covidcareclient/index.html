@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <title>CovidCare Test Client</title>
+    <title>CovidCare - Simulated Client</title>
   <link rel = "stylesheet" href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link href="app-content/app.less" rel="stylesheet/less" type="text/css" />
@@ -29,7 +29,7 @@
            <!-- <li ng-class="{active: currentState.match('^overview')}"><a ui-sref="overview">Overview</a></li>-->
             <li ng-class="{active: currentState.match('^subject')}"><a ui-sref="subjects">Registration</a></li>
 			  <li ng-class="{active: currentState.match('^relationship')}"><a ui-sref="relationships">Check-in</a></li>
-			  <!--   <li ng-class="{active: currentState.match('^twintype')}"><a ui-sref="twintypes">Twins</a></li>-->
+			  <!--   <li ng-class="{active: currentState.match('^twintype')}"><a ui-sref="twintypes">FHIR log</a></li>>-->
 			<!--	 <li ng-class="{active: currentState.match('^membership')}"><a ui-sref="memberships">BloodLine</a></li>-->
 			  <!--  <li ng-class="{active: currentState.match('^pedigree')}"><a ui-sref="pedigrees">Visualise Proband</a></li>-->
 			<!--	<li ng-class="{active: currentState.match('^visualisation')}"><a ui-sref="visualisations">Send & Visualise</a></li>-->
@@ -45,7 +45,7 @@
     <footer>
 
         <p>
-           <a href="https://mspgh.unimelb.edu.au/digitalhealth-cre" target="_blank">NHMRC Centre for Research Excellence in Digital Technology to Transform Chronic Disease Outcome</a>
+           <a href="https://mdhs.unimelb.edu.au/our-organisation/institutes-centres-departments/centre-for-digital-transformation-of-health" target="_blank">Centre for Digital Transformation of Health, The University of Melbourne</a>
         </p>
     </footer>
 
@@ -76,13 +76,17 @@
     <script src="app-services/subject.service.js"></script>
 	 <script src="app-services/relationship.service.js"></script>
 	 
+	  <script src="app-services/twintype.service.js"></script>
     <script src="overview/main.controller.js"></script>
     <script src="subjects/main.controller.js"></script>
     <script src="subjects/add-edit.controller.js"></script>
+	<script src="subjects/edit.controller.js"></script>
 	<script src="relationships/main.controller.js"></script>
     <script src="relationships/add-edit.controller.js"></script>
+	<script src="relationships/edit.controller.js"></script>
 	
-
+ <script src="twintypes/main.controller.js"></script>
+    <script src="twintypes/add-edit.controller.js"></script>
 		
 		
 

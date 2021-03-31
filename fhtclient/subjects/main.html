@@ -99,6 +99,7 @@ a FHIR server. Click <b>Fetch new alerts</b> to retreive new CovidCare alert dat
 </div>
 <div class="form-group col-md-12 text-left" style="margin-top:10px;padding-left: 0px" >
   <a ui-sref="subjects.add" class="btn btn-ark ">Set referral clinic</a>
+  <a ui-sref="subjects.edit" class="btn btn-ark ">View FHIR log</a>
   <p style="float:right;padding-top:5px;margin-bottom:5px" >Last update: {{ vm.lasupdateDate | date:'dd/MM/yyyy HH:mm:ss'}}</p>
 </div>
 
@@ -118,7 +119,7 @@ a FHIR server. Click <b>Fetch new alerts</b> to retreive new CovidCare alert dat
 
 <tr ng-repeat="subject in vm.subjects.slice(((vm.currentPage-1)*vm.itemsPerPage), ((vm.currentPage)*vm.itemsPerPage))">
          
-		   <td>{{subject.checkinDateTime  | date:'dd/MM/yyyy hh:mm'}}</td>
+		   <td>{{subject.checkinDateTime  | date:'dd/MM/yyyy HH:mm'}}</td>
 		   <td>{{subject.covidcareID}}</td>
 		   <td>{{subject.name}}</td>
            <td>{{subject.email}}</td>

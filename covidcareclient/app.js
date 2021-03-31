@@ -22,32 +22,38 @@
         // default route
         $urlRouterProvider.otherwise("/");
 
-        $stateProvider
-             .state('subjects', {
+  $stateProvider
+            .state('subjects', {
                 url: '/',
                 templateUrl: 'subjects/main.html',
                 controller: 'Subjects.MainController',
                 controllerAs: 'vm'
             })
-          .state('subjects.add', {
+				.state('subjects.add', {
                     url: '/add',
                     templateUrl: 'subjects/add-edit.html',
                     controller: 'Subjects.AddEditController',
                     controllerAs: 'vm'
                 })
-          .state('subjects.edit', {
+				.state('subjects.edit', {
                     url: '/edit/:refid/:id',
                     templateUrl: 'subjects/add-edit.html',
                     controller: 'Subjects.AddEditController',
                     controllerAs: 'vm'
                 })
-	.state('relationships', {
+				.state('subjects.fhir', {
+                    url: '/fhirlog',
+                    templateUrl: 'subjects/edit.html',
+                    controller: 'Subjects.EditController',
+                    controllerAs: 'vm'
+                })
+	        .state('relationships', {
                 url: '/checkin',
                 templateUrl: 'relationships/main.html',
                 controller: 'Relationships.MainController',
                 controllerAs: 'vm'
             })
-                .state('relationships.add', {
+				.state('relationships.add', {
                     url: '/add',
                     templateUrl: 'relationships/add-edit.html',
                     controller: 'Relationships.AddEditController',
@@ -65,6 +71,27 @@
                     controller: 'Relationships.AddEditController',
                     controllerAs: 'vm'
                 })
+				.state('relationships.fhir', {
+                    url: 'fhirlog',
+                    templateUrl: 'relationships/edit.html',
+                    controller: 'Relationships.EditController',
+                    controllerAs: 'vm'
+                })
+		
+           
+         //.state('twintypes', {
+		//		                url: '/fhirlog',
+		//		                templateUrl: 'twintypes/main.html',
+		//		                controller: 'Twintypes.MainController',
+		//		                controllerAs: 'vm'
+		//		            })
+		//		     .state('twintypes.add', {
+		//		                    url: '/view',
+		//		                    templateUrl: 'twintypes/add-edit.html',
+		//		                    controller: 'Twintypes.AddEditController',
+		//		                    controllerAs: 'vm'
+		//		                })
+
 
     }
 
@@ -79,6 +106,7 @@
         // track current state for active tab
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             $rootScope.currentState = toState.name;
+			$rootScope.CovidID=15;
         });
     }
 

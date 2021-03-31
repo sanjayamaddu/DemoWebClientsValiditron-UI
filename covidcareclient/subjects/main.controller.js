@@ -19,9 +19,7 @@
 		vm.pageChanged = pageChanged;
 		vm.setItemsPerPage = setItemsPerPage;
         vm.refresh=refresh;
-	  
-
-
+    
         initController();
 
         function initController() {

@@ -1,4 +1,4 @@
-(function () {
+ (function () {
     'use strict';
 
     angular
@@ -13,7 +13,7 @@
     link: linkFunc,
   };
 
-  function linkFunc($scope, element, $attrs, ctrl) {
+  function linkFunc($scope, element, $attrs, ctrl,) {
 	 
     
 	if ($attrs.ngModel=="vm.subject.age"){
@@ -38,7 +38,7 @@
 
 
 
-    function Controller($scope, $state, $stateParams, SubjectService,$mdDateLocale) {
+    function Controller($scope, $state, $stateParams, SubjectService,$mdDateLocale,$rootScope) {
         var vm = this;
 
 		$scope.referralcode = ["Alive","Deceased","Unknown"];
@@ -116,15 +116,6 @@
       return m.isValid() ? m.toDate() : new Date(NaN);
     };
 
-		
-		
-
-	
-	
-	
-
-		
-
 		//$scope.referralClinic=$scope.referralClinics[1];
 		SubjectService.fetchAllClinics().then(
             function(d) {
@@ -201,6 +192,10 @@
 
 			} else {
 				$scope.isDisabled = false;
+				//vm.subject.covidCareId="A-PAT-";
+				//$rootScope.CovidID=$rootScope.CovidID+1;
+				//vm.subject.covidCareId+=$rootScope.CovidID;
+				
 				SubjectService.getNextCovidCareID().then(
 					function (d) {
 						
